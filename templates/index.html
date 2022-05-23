@@ -1,0 +1,198 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronic Kidney Diseases Prediction</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/style.css">
+
+
+</head>
+
+<body>
+
+    <!-- As a heading -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><b>Chronic Kindney Dieases Prediction</b></a>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+
+    <div class="container">
+
+
+
+        <form action="\predict" method="post">
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Specific Gravity</h5>
+                            <!-- Specific Gravity -->
+                              <input type="text" name="sg"  placeholder="(1.005,1.010,1.015)" required="required">
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Hyper Tension</h5>
+                            <!-- Hyper Tension  -->
+                            <input type="text" name="htn"  placeholder ="Yes -1,No - 0" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Hemoglobin</h5>
+                            <!-- Hemoglobin -->
+                            <input type="text" name="hemo" placeholder="in gms" required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+            <br>
+
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Diabetes Mellitus</h5>
+                            <!--Diabetes Mellitus  -->
+                             <input type="text" name="dm" placeholder="Good - 1,Poor - 0" required="required" pattern="\d*" title="Numbers only, please. [range = 1 to 20]"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Albumin</h5>
+                            <!-- Albumin -->
+                           <input type="text" name="al" placeholder="(0,1,2,3)" required="required" pattern="\d*" title="Numbers only, please. [range = 1 to 20]"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Appetite</h5>
+                            <!-- Appetite -->
+                             <input type="text" name='appet' placeholder="Good - 1,Poor - 0" required="required" pattern="\d*" title="Numbers only, please. [range = 1 to 20]"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Red Blood Cell</h5>
+                            <!-- Red Blood Cell  -->
+                            <input type="text" name="rc"  placeholder ="in Millions/cm" required="required">
+                        </div>
+                    </div>
+                </div>
+
+    <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Plus Cell</h5>
+                            <!--Plus Cell  -->
+                            <input type="text" name="pc"  placeholder ="normal -1,abnormal - 0" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+        <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Pedal Endema</h5>
+                            <!-- Pedal Endema  -->
+                            <input type="text" name="pe"  placeholder ="Yes -1,No - 0" required="required">
+                        </div>
+                    </div>
+                </div>
+
+            <br>
+    <br>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Anemia</h5>
+                            <!-- Anemia  -->
+                            <input type="text" name="ane"  placeholder ="Yes -1,No - 0" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+
+            <!-- Submit -->
+            <input type="submit" value="Submit" class="btn btn-secondary">
+        </form>
+
+        <br>
+        <br>
+        <h3>{{ prediction_text }}</h3>
+
+        <br>
+        <br>
+
+    </div>
+
+
+
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
